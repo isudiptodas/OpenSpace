@@ -191,7 +191,7 @@ export default function Home() {
             </ul>
           </div>
 
-          <div className="w-full h-[40vh] lg:w-1/2 overflow-hidden flex justify-center items-center">
+          <div className="w-full h-[40vh] lg:w-1/2 overflow-hidden flex justify-center items-start">
             <AnimatedList>
               {newNotifications.map((item, idx) => (
                 <Notification {...item} key={idx} />
