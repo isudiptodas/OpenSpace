@@ -46,7 +46,7 @@ function page() {
 
                             <span className={`opacity-60 absolute right-5 top-[60px] cursor-pointer`} onClick={() => setPasswordVisible(!passwordVisible)}>{passwordVisible ? <FaEye /> : <FaEyeSlash />}</span>
 
-                            <p className="text-[12px] cursor-pointer text-blue-500">Forgot Password ?</p>
+                            <p className="text-[12px] lg:text-sm cursor-pointer text-blue-500">Forgot Password ?</p>
                             <p className={`w-full py-2 flex justify-center items-center gap-3 mt-3 bg-gradient-to-r from-blue-400 via-fuchsia-400 to-pink-400 text-white hover:opacity-80 duration-200 ease-in-out hover:gap-5 cursor-pointer rounded-md`} onClick={loginUser}>Enter <IoArrowBackOutline className="rotate-180" /></p>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ function page() {
 
                         <span className={`opacity-60 absolute right-5 top-[60px] cursor-pointer`} onClick={() => setPasswordVisible(!passwordVisible)}>{passwordVisible ? <FaEye /> : <FaEyeSlash />}</span>
 
-                        <p className="text-[12px] cursor-pointer text-blue-500">Forgot Password ?</p>
+                        <p className="text-[12px] lg:text-sm cursor-pointer text-blue-500">Forgot Password ?</p>
                         <p className={`w-full py-2 flex justify-center items-center gap-3 mt-3 bg-gradient-to-r from-blue-400 via-fuchsia-400 to-pink-400 text-white hover:opacity-80 duration-200 ease-in-out hover:gap-5 cursor-pointer rounded-md`}>Enter <IoArrowBackOutline className="rotate-180" /></p>
                     </div>
                 </div>
