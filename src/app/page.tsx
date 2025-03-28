@@ -203,13 +203,13 @@ export default function Home() {
         <p className={`text-2xl mt-5 mb-5 sm:text-3xl lg:text-5xl font-semibold lg:font-bold text-center`}>Events Corner</p>
 
         <section className={`h-auto py-4 px-4 w-[95%] grid grid-cols-1 justify-items-start gap-4 lg:grid-cols-3`}>
-          
+
           <div className={`w-full h-44 lg:h-52 rounded-md lg:rounded-lg bg-teal-300 overflow-hidden relative`}>
             <div className="w-full h-1/3 bg-gradient-to-t from-black to-transparent absolute bottom-0 flex flex-col justify-center items-start px-4 py-4">
               <p className="text-white font-semibold text-xl lg:text-2xl">Hackathons</p>
               <p className="text-white mb-2 lg:mb-4 text-[10px] font-light lg:text-sm">From idea to prototype—turn your vision into reality by participating in hackathons near you.</p>
             </div>
-              <img src="/images/event1.jpg" className={`h-full w-full object-cover`} />
+            <img src="/images/event1.jpg" className={`h-full w-full object-cover`} />
           </div>
 
           <div className={`w-full h-44 lg:h-52 rounded-md lg:rounded-lg bg-teal-300 overflow-hidden relative`}>
@@ -217,7 +217,7 @@ export default function Home() {
               <p className="text-white font-semibold text-xl lg:text-2xl">Book Fest</p>
               <p className="text-white mb-2 lg:mb-4 text-[10px] font-light lg:text-sm">A paradise for book lovers—discover, discuss, and dive into the book fests.</p>
             </div>
-              <img src="/images/event2.jpg" className={`h-full w-full object-cover`} />
+            <img src="/images/event2.jpg" className={`h-full w-full object-cover`} />
           </div>
 
           <div className={`w-full h-44 lg:h-52 rounded-md lg:rounded-lg bg-teal-300 overflow-hidden relative`}>
@@ -225,7 +225,7 @@ export default function Home() {
               <p className="text-white font-semibold text-xl lg:text-2xl">Public Event</p>
               <p className="text-white mb-2 lg:mb-4 text-[10px] font-light lg:text-sm">Bring people together for inspiration, fun, and unforgettable experiences.</p>
             </div>
-              <img src="/images/event3.jpg" className={`h-full w-full object-cover`} />
+            <img src="/images/event3.jpg" className={`h-full w-full object-cover`} />
           </div>
         </section>
 
@@ -245,7 +245,33 @@ export default function Home() {
           </Accordion>
         </section>
 
+        <footer className="w-full h-72 xl:h-80 bg-black relative flex flex-col justify-start overflow-hidden items-center py-5 sm:gap-10">
+          <p className="w-full text-center text-white text-[12px] sm:text-lg xl:text-xl tracking-widest">OPENSPACE</p>
 
+          <div className="py-2 px-2 h-full mt-5 w-full grid grid-cols-3 justify-items-center">
+            
+            <div className="h-full w-full flex flex-col justify-start items-center">
+              <p className="text-white text-[12px] lg:text-lg font-bold mb-3">General</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">About Us</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Why Us ?</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Contact Us</p>
+            </div>
+            <div className="h-full w-full flex flex-col justify-start items-center">
+              <p className="text-white text-[12px] lg:text-lg font-bold mb-3">Services</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Marketplace</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Home Service</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Crowdfunding</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Events</p>
+            </div>
+            <div className="h-full w-full flex flex-col justify-start items-center">
+              <p className="text-white text-[12px] lg:text-lg font-bold mb-3">Website</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Terms of Use</p>
+              <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Privacy Policy</p>
+            </div>
+
+          </div>
+        </footer>
+        
       </div>
     </>
   );
