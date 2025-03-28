@@ -69,7 +69,7 @@ function page() {
                                 <p className={`text-[10px] w-full lg:text-[12px] flex justify-start items-center gap-2 ${containSpecial ? "text-green-500" : "text-black"}`}>Password contains special characters <span className={`${containSpecial ? "block text-green-500" : "hidden"}`}>✓</span></p>
                             </div>
 
-                            <p className={`w-full py-2 flex justify-center items-center gap-3 mt-3 bg-black text-white hover:opacity-80 duration-200 ease-in-out hover:gap-5 cursor-pointer rounded-md`} onClick={register}>Create Account <IoArrowBackOutline className="rotate-180" /></p>
+                            <p className={`w-full py-2 flex justify-center items-center gap-3 mt-3 bg-gradient-to-r from-blue-400 via-fuchsia-400 to-pink-400 text-white hover:opacity-80 duration-200 ease-in-out hover:gap-5 cursor-pointer rounded-md`} onClick={register}>Create Account <IoArrowBackOutline className="rotate-180" /></p>
                         </div>
                     </div>
                 </div>
