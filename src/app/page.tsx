@@ -24,6 +24,7 @@ import { AnimatedList } from "@/components/magicui/animated-list";
 import { Notification } from "@/components/Notification";
 import { notifications } from "@/data/notification";
 import Footer from '@/components/Footer';
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 let newNotifications = notifications;
 newNotifications = Array.from({ length: 10 }, () => newNotifications).flat();
@@ -230,6 +231,14 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={`w-[95%] sm:w-[70%] h-auto py-5 flex justify-center items-center gap-4`}>
+          
+          <h1 className={`text-3xl font-bold`}>Make life</h1>
+          <ContainerTextFlip className="text-2xl md:text-3xl" interval={2000}
+            words={["managed", "funded", "delivered", "effortless"]}
+          />
+        </section>
+
         <section className={`w-[95%] sm:w-[70%] md:w-[50%] h-auto py-5 flex flex-col justify-center items-center`}>
 
           <p className={`text-2xl sm:text-3xl mb-10 lg:text-5xl font-semibold lg:font-bold`}>Common Queries</p>
@@ -246,7 +255,7 @@ export default function Home() {
           </Accordion>
         </section>
 
-        <Footer/>
+        <Footer />
 
 
       </div>
