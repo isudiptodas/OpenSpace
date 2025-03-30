@@ -32,8 +32,18 @@ function page() {
                     <h1 className={`text-2xl sm:text-3xl`}>Events</h1>
                 </div>
 
-                <div className={`w-[95%] md:w-[90%] py-3 px-4 h-auto grid grid-cols-1 md:grid-cols-3 justify-items-center gap-3`}>
+                <div className={`w-[95%] md:w-[90%] py-5 md:py-7  px-4 h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-3`}>
+                   <div className={`w-full h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500`}>
+                   </div>
                    
+                   <div className={`w-full h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500`}>
+                   </div>
+                </div>
+
+                <h1 className={`w-full text-2xl font-bold text-center mb-5`}>Explore Events</h1>
+
+                <div className={`w-[95%] md:w-[90%] h-auto px-3 py-3 rounded-md md:rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-gray-200`}>
+
                 </div>
 
             </div>
