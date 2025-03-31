@@ -5,8 +5,20 @@ import Footer from '@/components/Footer';
 import { useState, useEffect } from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { menuLinks } from "@/data/sidebarLinks";
+import { FileUpload } from "@/components/ui/file-upload";
 
 function page() {
+
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleFileUpload = (file: File[]) => {
+    setFiles(file);
+    console.log(file);
+  };
+
+  const removeFiles = () => {
+    setFiles([]);
+  }
 
   return (
     <>
@@ -31,20 +43,26 @@ function page() {
           <h1 className={`text-2xl sm:text-3xl`}>Settings</h1>
         </div>
 
+        <div className="w-[95%] md:w-[60%] lg:w-[40%] border-4 mt-5 border-dashed rounded-md md:rounded-lg h-auto">
+          <FileUpload onChange={handleFileUpload} />
+        </div>
+
+       {/* <p className={`w-[95%] md:w-[60%] lg:w-[40%] text-sm bg-red-500 rounded-md lg:rounded-lg text-white cursor-pointer hover:opacity-75 duration-200 ease-in-out active:scale-95 text-center py-2 ${files && files.length > 0 ? "block" : "hidden"}`} onClick={removeFiles}>Remove File</p> */}
+
         <p className={`text-start w-[95%] md:w-[60%] lg:w-[40%] text-xl px-2 font-bold mt-5`}>General</p>
-        
+
         <div className={`w-[95%] md:w-[60%] lg:w-[40%] px-5 py-5 bg-gray-200 rounded-md md:rounded-lg flex flex-col justify-center items-start gap-3`}>
-          <input type="email" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update email"/>
-          <input type="text" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update name"/>
-          <input type="text" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update number"/>
-          <p className={`w-full rounded-md bg-black text-white text-center py-2 cursor-pointer hover:opacity-70 duration-200 ease-in-out`}>Update</p>
+          <input type="email" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update email" />
+          <input type="text" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update name" />
+          <input type="text" className={`w-full py-2 px-3 rounded-md bg-white`} placeholder="Update number" />
+          <p className={`w-full rounded-md active:scale-95 bg-black text-white text-center py-2 cursor-pointer hover:opacity-70 duration-200 ease-in-out`}>Update</p>
         </div>
 
         <p className={`text-start w-[95%] md:w-[60%] lg:w-[40%] text-xl px-2 font-bold mt-5`}>Website</p>
 
         <div className={`w-[95%] md:w-[60%] lg:w-[40%] px-5 py-5 bg-gray-200 rounded-md md:rounded-lg flex flex-col justify-center items-start gap-3`}>
           <p className={`text-[12px] text-center sm:text-sm md:text-lg`}>Subscribe to our latest updates, newsletters and offers</p>
-          <p className={`w-full rounded-md text-center bg-green-500 py-2 cursor-pointer hover:opacity-70 duration-200 ease-in-out`}>Subscribe</p>
+          <p className={`w-full rounded-md text-center active:scale-95 bg-green-500 py-2 cursor-pointer hover:opacity-70 duration-200 ease-in-out`}>Subscribe</p>
         </div>
 
       </div>
