@@ -13,12 +13,64 @@ import { FaLocationDot } from "react-icons/fa6";
 import axios from 'axios';
 import { LuAlarmClock } from "react-icons/lu";
 import { IoAddOutline } from "react-icons/io5";
+import {
+    Drawer,
+    DrawerContent,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
 
 function page() {
+
+    const eventsInfo = [
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+        {
+            title: "Argha weds IIT Baba",
+            shortDesc: 'Nothing just casually setting up.',
+            location: "Techno Main Salt Lake"
+        },
+    ]
 
     const [lat, setLat] = useState<number>();
     const [long, setLong] = useState<number>();
     const [location, setLocation] = useState('');
+    const [eventTitle, setEventTitle] = useState('');
+    const [eventDesc, setEventDesc] = useState('');
+    const [eventLocation, setEventLocation] = useState('');
+    const [eventPhoto, setEventPhoto] = useState('');
     const [locationVisible, setLocationVisible] = useState(false);
 
     const handleLocationVisible = () => {
@@ -60,7 +112,6 @@ function page() {
                 console.log(err);
             }
         });
-
     }
 
     return (
@@ -91,17 +142,17 @@ function page() {
                 <div className={`w-[95%] md:w-[90%] py-5 md:py-7  px-4 h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-3`}>
 
                     <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
-                        <IoAddOutline className="text-white absolute text-7xl rotate-6 opacity-55 top-8 font-bold right-2 duration-200 ease-in-out group-hover:top-10"/>
-                        <IoAddOutline className="text-white absolute text-4xl rotate-90 opacity-55 top-2 font-bold right-8 group-hover:right-10 duration-200 ease-in-out"/>
-                        <IoAddOutline className="text-white absolute text-6xl rotate-90 opacity-30 top-2 font-bold left-8 group-hover:top-5 duration-200 ease-in-out"/>
+                        <IoAddOutline className="text-white absolute text-7xl rotate-6 opacity-55 top-8 font-bold right-2 duration-200 ease-in-out group-hover:top-10" />
+                        <IoAddOutline className="text-white absolute text-4xl rotate-90 opacity-55 top-2 font-bold right-8 group-hover:right-10 duration-200 ease-in-out" />
+                        <IoAddOutline className="text-white absolute text-6xl rotate-90 opacity-30 top-2 font-bold left-8 group-hover:top-5 duration-200 ease-in-out" />
                         <h1 className={`text-2xl font-bold text-white`}>Host new event</h1>
                         <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>Start by uploading more details <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
                     </div>
 
                     <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
-                        <LuAlarmClock className="text-white absolute text-7xl rotate-12 opacity-55 top-2 font-bold right-2 group-hover:right-5 duration-200 ease-in-out"/>
-                        <LuAlarmClock className="text-white absolute text-3xl rotate-[26deg] opacity-50 bottom-5 font-bold right-2 group-hover:right-10 duration-200 ease-in-out"/>
-                        <LuAlarmClock className="text-white absolute text-5xl rotate-[42deg] opacity-30 top-5 font-bold left-2 group-hover:top-2 duration-200 ease-in-out"/>
+                        <LuAlarmClock className="text-white absolute text-7xl rotate-12 opacity-55 top-2 font-bold right-2 group-hover:right-5 duration-200 ease-in-out" />
+                        <LuAlarmClock className="text-white absolute text-3xl rotate-[26deg] opacity-50 bottom-5 font-bold right-2 group-hover:right-10 duration-200 ease-in-out" />
+                        <LuAlarmClock className="text-white absolute text-5xl rotate-[42deg] opacity-30 top-5 font-bold left-2 group-hover:top-2 duration-200 ease-in-out" />
                         <h1 className={`text-2xl font-bold text-white`}>Past Events</h1>
                         <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>View your all attended events <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
                     </div>
@@ -123,16 +174,34 @@ function page() {
                     </div>
                 </div>
 
+
+                {/* drawer box */}
+                <Drawer>
+                    <DrawerTrigger></DrawerTrigger>
+                    <DrawerContent className="h-[60vh] px-4 md:px-10 py-4 md:py-8 w-full flex justify-center items-center">
+                        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2">
+                            <div className="w-full h-full md:h-full rounded-md p-5 lg:rounded-lg overflow-hidden">
+                                <img src={eventPhoto} className="h-full w-full object-cover rounded-md lg:rounded-lg" />
+                            </div>
+
+                            <div className="w-full h-full md:h-full bg-red-400 flex flex-col justify-start items-start  px-2 py-3 overflow-hidden">
+                                <h1 className="text-3xl lg:text-5xl font-bold w-full text-start">{eventTitle}</h1>
+                                <p className="text-[12px] lg:text-sm w-full text-start">{eventTitle}</p>
+                            </div>
+                        </div>
+                    </DrawerContent>
+                </Drawer>
+
+
                 <h1 className={`w-full text-2xl lg:text-5xl lg:mt-3 font-bold text-center mb-5`}>Explore Events</h1>
 
                 <div className={`w-[95%] md:w-[90%] h-auto px-3 py-3 rounded-md md:rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-gray-200 lg:bg-transparent gap-5`}>
-                    <EventBox />
-                    <EventBox />
-                    <EventBox />
-                    <EventBox />
-                    <EventBox />
-                    <EventBox />
-                    <EventBox />
+                    {eventsInfo.map((event, index) => {
+                        return <EventBox key={index} photo="/images/event1.jpg" title={event.title} shortDesc={event.shortDesc} location={event.location} onClick={() => {
+                            const triggerButton = document.querySelector("[data-slot='drawer-trigger']") as HTMLButtonElement | null;
+                            triggerButton?.click(); setEventDesc(event.shortDesc); setEventTitle(event.title); setEventPhoto('/images/event1.jpg');
+                        }} />
+                    })}
                 </div>
 
             </div>
