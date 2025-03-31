@@ -4,7 +4,7 @@ function Footer() {
     return (
 
         <>
-            <footer className="w-full h-72 xl:h-80 bg-black relative flex flex-col justify-start overflow-hidden items-center py-5 sm:gap-10">
+            <footer className="w-full h-72 z-30 xl:h-80 bg-black relative flex flex-col justify-start overflow-hidden items-center py-5 sm:gap-10">
                 <p className="w-auto py-1 px-5 rounded-full border-[1px] border-white mt-2 text-center text-white text-[12px] sm:text-lg xl:text-xl tracking-widest">OPENSPACE</p>
 
                 <div className="py-2 px-2 h-full mt-5 w-full grid grid-cols-3 justify-items-center">
