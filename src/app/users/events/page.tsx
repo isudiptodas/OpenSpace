@@ -7,23 +7,24 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import { menuLinks } from "@/data/sidebarLinks";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import EventBox from "@/components/EventBox";
-import { CiSearch } from "react-icons/ci";
+import { FaSearch } from "react-icons/fa";
 import { Toaster, toast } from 'sonner';
 import { FaLocationDot } from "react-icons/fa6";
+import axios from 'axios';
 
 function page() {
 
-    const[lat, setLat] = useState('');
-    const[long, setLong] = useState('');
-    const[location, setLocation] = useState('');
-    const[locationVisible, setLocationVisible] = useState(false);
+    const [lat, setLat] = useState<number>();
+    const [long, setLong] = useState<number>();
+    const [location, setLocation] = useState('');
+    const [locationVisible, setLocationVisible] = useState(false);
 
     const handleLocationVisible = () => {
         setLocationVisible(!locationVisible);
     }
 
     const submitLocation = () => {
-        if(location === ''){
+        if (location === '') {
             toast.error("Please enter a location");
             return;
         }
@@ -32,11 +33,39 @@ function page() {
         setLocationVisible(!locationVisible);
     }
 
+    const locationSearch = async () => {
+
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            setLat(pos.coords.latitude);
+            setLong(pos.coords.longitude);
+
+            const latitude = pos.coords.latitude;
+            const longitude = pos.coords.longitude;
+
+            const api = process.env.NEXT_PUBLIC_OPENCAGE_API;
+
+            const openCageUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude},${longitude}&key=${api}`;
+
+            try {
+                const res = await axios.get(openCageUrl);
+
+                //console.log(res.data.results[0].components.city || res.data.results[0].components.suburb);
+                setLocation(res.data.results[0].components.city || res.data.results[0].components.suburb);
+
+                setLocationVisible(!locationVisible);
+            }
+            catch (err: unknown) {
+                console.log(err);
+            }
+        });
+
+    }
+
     return (
         <>
             <div className={`w-full duration-200 ease-in-out min-h-screen flex flex-col justify-start items-center gap-5 pb-10 relative`}>
 
-                <Toaster position="top-center" richColors/>
+                <Toaster position="top-center" richColors />
 
                 {/* navbar */}
                 <div className={`w-full h-auto z-50 py-4 sm:py-5 backdrop-blur-3xl fixed top-0 flex justify-center items-center`}>
@@ -75,14 +104,14 @@ function page() {
                         <p className="bg-black text-white text-start py-2 px-4 lg:py-3 rounded-full w-full flex justify-start items-center gap-2 hover:opacity-75 duration-200 ease-in-out cursor-pointer" onClick={handleLocationVisible}><FaLocationDot />{location || "Location"}</p>
 
                         <div className={`w-full ${locationVisible ? "block" : "hidden"} absolute top-0 rounded-md lg:rounded-lg flex flex-col justify-start items-center bg-gray-200 gap-3 py-2 px-3`}>
-                            <input type="text" className="bg-white py-2 px-3 w-full rounded-full" placeholder="Enter location" onChange={(e) => setLocation(e.target.value)} />
+                            <input type="text" className="bg-white py-2 px-3 w-full rounded-full" placeholder="Enter location" value={location} onChange={(e) => setLocation(e.target.value)} />
                             <p className="bg-black text-white text-center py-2 rounded-full w-full cursor-pointer hover:opacity-75 duration-200 ease-in-out active:scale-95" onClick={submitLocation}>Submit</p>
-                            <p className="bg-black text-white text-center py-2 rounded-full w-full cursor-pointer hover:opacity-75 duration-200 ease-in-out active:scale-95">Auto Search</p>
+                            <p className="bg-black text-white text-center py-2 rounded-full w-full cursor-pointer hover:opacity-75 duration-200 ease-in-out active:scale-95" onClick={locationSearch}>Auto Search</p>
                         </div>
                     </div>
                     <div className="w-full md:w-[80%] flex justify-between items-center">
                         <input type="text" className="w-[85%] sm:w-[90%] md:w-[95%] rounded-full py-2 lg:py-3 text-sm px-4 bg-gray-200" placeholder="Enter search term" />
-                        <span className="p-2 lg:p-3 bg-black text-white cursor-pointer rounded-full hover:opacity-75 duration-200 ease-in-out active:scale-95"><CiSearch className="font-semibold lg:font-bold" /></span>
+                        <span className="p-2 lg:p-3 bg-black text-white cursor-pointer rounded-full hover:opacity-75 duration-200 ease-in-out active:scale-95"><FaSearch className="font-semibold lg:font-bold" /></span>
                     </div>
                 </div>
 
