@@ -141,7 +141,7 @@ function page() {
 
                 <div className={`w-[95%] md:w-[90%] py-5 md:py-7  px-4 h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-3`}>
 
-                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
+                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
                         <IoAddOutline className="text-white absolute text-7xl rotate-6 opacity-55 top-8 font-bold right-2 duration-200 ease-in-out group-hover:top-10" />
                         <IoAddOutline className="text-white absolute text-4xl rotate-90 opacity-55 top-2 font-bold right-8 group-hover:right-10 duration-200 ease-in-out" />
                         <IoAddOutline className="text-white absolute text-6xl rotate-90 opacity-30 top-2 font-bold left-8 group-hover:top-5 duration-200 ease-in-out" />
@@ -149,7 +149,7 @@ function page() {
                         <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>Start by uploading more details <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
                     </div>
 
-                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
+                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
                         <LuAlarmClock className="text-white absolute text-7xl rotate-12 opacity-55 top-2 font-bold right-2 group-hover:right-5 duration-200 ease-in-out" />
                         <LuAlarmClock className="text-white absolute text-3xl rotate-[26deg] opacity-50 bottom-5 font-bold right-2 group-hover:right-10 duration-200 ease-in-out" />
                         <LuAlarmClock className="text-white absolute text-5xl rotate-[42deg] opacity-30 top-5 font-bold left-2 group-hover:top-2 duration-200 ease-in-out" />
