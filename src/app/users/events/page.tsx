@@ -18,6 +18,16 @@ import {
     DrawerContent,
     DrawerTrigger,
 } from "@/components/ui/drawer"
+import {
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalTrigger,
+} from '@/components/ui/animated-modal';
+import { FileUpload } from "@/components/ui/file-upload";
+import { useRouter } from "next/navigation";
+import { Calendar } from "@/components/ui/calendar";
+import { MdEventNote } from "react-icons/md";
 
 function page() {
 
@@ -72,10 +82,18 @@ function page() {
     const [eventLocation, setEventLocation] = useState('');
     const [eventPhoto, setEventPhoto] = useState('');
     const [locationVisible, setLocationVisible] = useState(false);
+    const [files, setFiles] = useState<File[]>([]);
+    const [eventDate, setEventdate] = useState<Date | undefined>(new Date());
+    const router = useRouter();
 
     const handleLocationVisible = () => {
         setLocationVisible(!locationVisible);
     }
+
+    const handleFileUpload = (file: File[]) => {
+        setFiles(file);
+        console.log(file);
+    };
 
     const submitLocation = () => {
         if (location === '') {
@@ -85,6 +103,10 @@ function page() {
 
         console.log(location);
         setLocationVisible(!locationVisible);
+    }
+
+    const redirect = (link: string) => {
+        router.push(link);
     }
 
     const locationSearch = async () => {
@@ -139,22 +161,65 @@ function page() {
                     <h1 className={`text-2xl sm:text-3xl`}>Events</h1>
                 </div>
 
-                <div className={`w-[95%] md:w-[90%] py-5 md:py-7  px-4 h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-3`}>
+                <div className={`w-[95%] md:w-[90%] py-5 md:py-7 px-4 h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-3`}>
+                    <Modal>
+                        <ModalTrigger className="w-full md:w-[90%] px-0 h-auto py-0">
+                            <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
+                                <IoAddOutline className="text-white absolute text-7xl rotate-6 opacity-55 top-8 font-bold right-2 duration-200 ease-in-out group-hover:top-10" />
+                                <IoAddOutline className="text-white absolute text-4xl rotate-90 opacity-55 top-2 font-bold right-8 group-hover:right-10 duration-200 ease-in-out" />
+                                <IoAddOutline className="text-white absolute text-6xl rotate-90 opacity-30 top-2 font-bold left-8 group-hover:top-5 duration-200 ease-in-out" />
+                                <h1 className={`text-2xl font-bold text-white`}>Host new event</h1>
+                                <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>Start by uploading more details <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
+                            </div>
+                        </ModalTrigger>
+                        <ModalBody>
+                            <ModalContent className="h-auto py-5 px-3 flex flex-col justify-start items-center gap-2 overflow-y-auto">
+                                <div className="w-full border-4 mt-10 mb-3 border-dashed rounded-md md:rounded-lg h-auto">
+                                    <FileUpload onChange={handleFileUpload} />
+                                </div>
 
-                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-yellow-300 via-orange-400 to-fuchsia-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
-                        <IoAddOutline className="text-white absolute text-7xl rotate-6 opacity-55 top-8 font-bold right-2 duration-200 ease-in-out group-hover:top-10" />
-                        <IoAddOutline className="text-white absolute text-4xl rotate-90 opacity-55 top-2 font-bold right-8 group-hover:right-10 duration-200 ease-in-out" />
-                        <IoAddOutline className="text-white absolute text-6xl rotate-90 opacity-30 top-2 font-bold left-8 group-hover:top-5 duration-200 ease-in-out" />
-                        <h1 className={`text-2xl font-bold text-white`}>Host new event</h1>
-                        <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>Start by uploading more details <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
-                    </div>
+                                <p className="w-full px-5 py-5 text-center text-[10px] text-gray-500">Enter a photo of the event (if any)</p>
 
-                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`}>
+                                <input type="text" className="w-full rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Enter Event Title *" />
+                                <textarea className="w-full min-h-52 rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Enter Event description *" />
+                                <input type="text" className="w-full rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Event organized by *" />
+                                <input type="text" className="w-full rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Organizer contact *" />
+                                <input type="email" className="w-full rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Organizer email *" />
+                                <input type="text" className="w-full rounded-md lg:rounded-lg bg-gray-200 px-4 py-2" placeholder="Event location *" />
+
+                                <h1 className="text-xl text-black w-full text-start my-3">Event date *</h1>
+
+                                <Calendar
+                                    selected={eventDate}
+                                    mode="single"
+                                    onSelect={setEventdate}
+                                />
+
+                                <p className="w-auto px-5 rounded-md lg:rounded-lg bg-gradient-to-r from-yellow-400 via-orange-400 to-fuchsia-500 text-white text-center text-[12px] cursor-default py-2">Date selected : <b>{eventDate?.toLocaleDateString('en-GB').slice(0,10)}</b></p>
+
+                                <p className=" w-full rounded-md lg:rounded-lg bg-black text-white text-center py-2 cursor-pointer hover:opacity-65 duration-200 ease-in-out active:scale-95">Submit for review</p>
+
+                                <p className="w-full px-5 py-5 text-center text-[10px] text-gray-500">After submitting your event details we will verify from our side and after approval your event will be listed on the main page. The verification process usually takes around 24 hours.</p>
+
+
+                            </ModalContent>
+                        </ModalBody>
+                    </Modal>
+
+                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-teal-300 via-cyan-400 to-indigo-500 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`} onClick={() => redirect('/users/events/past-events')}>
                         <LuAlarmClock className="text-white absolute text-7xl rotate-12 opacity-55 top-2 font-bold right-2 group-hover:right-5 duration-200 ease-in-out" />
                         <LuAlarmClock className="text-white absolute text-3xl rotate-[26deg] opacity-50 bottom-5 font-bold right-2 group-hover:right-10 duration-200 ease-in-out" />
                         <LuAlarmClock className="text-white absolute text-5xl rotate-[42deg] opacity-30 top-5 font-bold left-2 group-hover:top-2 duration-200 ease-in-out" />
                         <h1 className={`text-2xl font-bold text-white`}>Past Events</h1>
                         <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>View your all attended events <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
+                    </div>
+
+                    <div className={`w-full relative group h-36 rounded-md lg:rounded-lg overflow-hidden active:scale-95 duration-200 ease-in-out bg-gradient-to-r from-red-300 via-red-500 to-red-800 flex flex-col justify-end items-start px-5 pb-3 cursor-pointer`} onClick={() => redirect('/users/events/your-events')}>
+                        <MdEventNote  className="text-white absolute text-7xl rotate-12 opacity-55 top-2 font-bold right-2 group-hover:right-5 duration-200 ease-in-out" />
+                        <MdEventNote  className="text-white absolute text-3xl rotate-[26deg] opacity-50 bottom-5 font-bold right-2 group-hover:right-10 duration-200 ease-in-out" />
+                        <MdEventNote  className="text-white absolute text-5xl rotate-[42deg] opacity-30 top-5 font-bold left-2 group-hover:top-2 duration-200 ease-in-out" />
+                        <h1 className={`text-2xl font-bold text-white`}>Your Events</h1>
+                        <p className={`flex justify-center items-center gap-2 text-start text-sm text-white`}>View all your organized events <MdKeyboardDoubleArrowRight className="text-2xl opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-opacity" />  </p>
                     </div>
                 </div>
 
@@ -173,6 +238,8 @@ function page() {
                         <span className="p-2 lg:p-3 bg-black text-white cursor-pointer rounded-full hover:opacity-75 duration-200 ease-in-out active:scale-95"><FaSearch className="font-semibold lg:font-bold" /></span>
                     </div>
                 </div>
+
+
 
 
                 {/* drawer box */}
