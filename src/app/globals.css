@@ -119,3 +119,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scroll {
+  scrollbar-width: none;
+}
