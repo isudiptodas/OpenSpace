@@ -90,7 +90,7 @@ function page() {
                 </div>
 
                 {/* floating menu dock */}
-                <div className="w-full flex justify-end md:justify-center items-center fixed bottom-7 px-5">
+                <div className="w-full z-30 flex justify-end md:justify-center items-center fixed bottom-7 px-5">
                     <div className=" w-auto ">
                         <FloatingDock
                             items={menuLinks}
