@@ -22,7 +22,7 @@ function page() {
 
     return (
         <>
-            <div className={`w-full overflow-hidden duration-200 ease-in-out min-h-screen flex flex-col justify-start items-center gap-5 relative`}>
+            <div className={`w-full overflow-hidden duration-200 ease-in-out min-h-screen py-5 md:py-10 flex flex-col justify-start items-center gap-5 relative`}>
 
                 {/* navbar */}
                 <div className={`w-full h-auto z-50 py-4 sm:py-5 backdrop-blur-3xl fixed top-0 flex justify-center items-center`}>
@@ -46,7 +46,7 @@ function page() {
                 <NavBar className="w-auto py-2 px-3 cursor-pointer" tabs={tabs} selectedTab={selectedTab} onTabChange={setSelectedTab} />
 
                 {/* sell tab */}
-                <div className={`w-[95%] ${selectedTab === 'sell' ? "block" : "hidden"} md:w-[90%] h-auto py-3 px-2 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2`}>
+                <div className={`w-[95%] ${selectedTab === 'sell' ? "block" : "hidden"} md:w-[90%] h-auto py-3 px-2 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2 md:gap-7`}>
 
                     {/* new sell box */}
                     <div className="w-full hide-scroll bg-white  md:border-[1px] md:rounded-lg md:border-black  h-[60vh] md:h-[80vh] flex flex-col justify-start items-center gap-3 overflow-y-auto pb-5 lg:px-4">
@@ -75,7 +75,7 @@ function page() {
 
                         <div className="w-full rounded-md bg-gray-200 flex justify-start items-start">
                             <span className=" bg-gray-400 px-3 py-2 text-black rounded-l-md md:rounded-l-lg">₹</span>
-                            <input type="number" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter selling price" min={0}/>
+                            <input type="number" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter selling price" min={0} />
                         </div>
 
                         <p className=" w-full rounded-md mt-2 lg:rounded-lg bg-black text-white text-center py-2 cursor-pointer hover:opacity-65 duration-200 ease-in-out active:scale-95">Submit for review</p>
@@ -85,13 +85,13 @@ function page() {
                     </div>
 
                     {/* past history */}
-                    <div className="w-full bg-teal-200 hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
-                       
+                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
+                        <h1 className="w-full text-center my-2 text-3xl text-black font-semibold">Past History</h1>
                     </div>
                 </div>
 
                 {/* rent tab */}
-                <div className={`w-[95%] ${selectedTab === 'rent' ? "block" : "hidden"} md:w-[90%] h-auto py-3 px-2 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2`}>
+                <div className={`w-[95%] ${selectedTab === 'rent' ? "block" : "hidden"} md:w-[90%] h-auto py-3 px-2 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2 md:gap-7`}>
 
                     {/* new rent box */}
                     <div className="w-full hide-scroll bg-white  md:border-[1px] md:rounded-lg md:border-black  h-[60vh] md:h-[80vh] flex flex-col justify-start items-center gap-3 overflow-y-auto pb-5 lg:px-4">
@@ -130,8 +130,8 @@ function page() {
                     </div>
 
                     {/* past history */}
-                    <div className="w-full bg-fuchsia-500 hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
-                       
+                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
+                        <h1 className="w-full text-center my-2 text-3xl text-black font-semibold">Past History</h1>
                     </div>
                 </div>
 
