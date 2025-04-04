@@ -12,15 +12,14 @@ function Footer() {
                     <div className="h-full w-full flex flex-col justify-start items-center gap-2">
                         <p className="text-white text-[12px] lg:text-lg font-bold mb-3">General</p>
                         <Link href='/about' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">About Us</Link>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Why Us ?</p>
                         <Link href='/contact' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Contact Us</Link>
                     </div>
                     <div className="h-full w-full flex flex-col justify-start items-center gap-2">
                         <p className="text-white text-[12px] lg:text-lg font-bold mb-3">Services</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Marketplace</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Home Service</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Crowdfunding</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Events</p>
+                        <Link href='/users/marketplace' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Marketplace</Link>
+                        <Link href='/users/services' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Home Service</Link>
+                        <Link href='/users/crowdfunding' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Crowdfunding</Link>
+                        <Link href='/users/events' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Events</Link>
                     </div>
                     <div className="h-full w-full flex flex-col justify-start items-center gap-2">
                         <p className="text-white text-[12px] lg:text-lg font-bold mb-3">Website</p>
