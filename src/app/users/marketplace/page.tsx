@@ -7,6 +7,13 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import { menuLinks } from "@/data/sidebarLinks";
 import { NavBar } from "@/components/NavBar";
 import { FileUpload } from "@/components/ui/file-upload";
+import {
+    Drawer,
+    DrawerContent,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
+import SellBox from "@/components/SellBox";
+import RentBox from "@/components/RentBox";
 
 function page() {
 
@@ -19,6 +26,105 @@ function page() {
         setFiles(file);
         console.log(file);
     };
+
+    const history = [
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+        {
+            img: '/images/event3.jpg',
+            itemName: "Apple iPhone",
+            description: "A very big but small description of a product of apple which is an aple iphone.",
+            condition: "new",
+            usageTime: "6",
+            sellerName: "Sudipto Das",
+            sellerContact: "84937483493",
+            sellerEmail: "abcd@gmail.com123",
+            sellerLocation: "Kolkata",
+            price: "434343"
+        },
+    ];
 
     return (
         <>
@@ -45,6 +151,23 @@ function page() {
 
                 <NavBar className="w-auto py-2 px-3 cursor-pointer" tabs={tabs} selectedTab={selectedTab} onTabChange={setSelectedTab} />
 
+                {/* drawer box */}
+                <Drawer>
+                    <DrawerTrigger></DrawerTrigger>
+                    <DrawerContent className="h-[60vh] px-4 md:px-10 py-4 md:py-8 w-full flex justify-center items-center">
+                        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2">
+                            <div className="w-full h-full md:h-full rounded-md p-5 lg:rounded-lg overflow-hidden">
+                                <img src='' className="h-full w-full object-cover rounded-md lg:rounded-lg" />
+                            </div>
+
+                            <div className="w-full h-full md:h-full bg-red-400 flex flex-col justify-start items-start  px-2 py-3 overflow-hidden">
+                                <h1 className="text-3xl lg:text-5xl font-bold w-full text-start"></h1>
+                                <p className="text-[12px] lg:text-sm w-full text-start"></p>
+                            </div>
+                        </div>
+                    </DrawerContent>
+                </Drawer>
+
                 {/* sell tab */}
                 <div className={`w-[95%] ${selectedTab === 'sell' ? "block" : "hidden"} md:w-[90%] h-auto py-3 px-2 grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2 md:gap-7`}>
 
@@ -67,7 +190,7 @@ function page() {
                             <span className={`w-auto px-3 py-2 rounded-md cursor-pointer duration-200 ease-in-out ${condition === 'used' ? "bg-gradient-to-r from-indigo-300 to-blue-600 text-white" : "border-[1px] border-black"} active:scale-95`} onClick={() => setCondition('used')}>Used</span>
                         </div>
 
-                        <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter usage time in months (if any)" />
+                        <input type="number" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter usage time in days (if any)" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter seller name" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter seller contact" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter seller email (if any)" />
@@ -75,7 +198,7 @@ function page() {
 
                         <div className="w-full rounded-md bg-gray-200 flex justify-start items-start">
                             <span className=" bg-gray-400 px-3 py-2 text-black rounded-l-md md:rounded-l-lg">₹</span>
-                            <input type="number" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter selling price" min={0} />
+                            <input type="text" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter selling price" min={0} />
                         </div>
 
                         <p className=" w-full rounded-md mt-2 lg:rounded-lg bg-black text-white text-center py-2 cursor-pointer hover:opacity-65 duration-200 ease-in-out active:scale-95">Submit for review</p>
@@ -85,8 +208,15 @@ function page() {
                     </div>
 
                     {/* past history */}
-                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
+                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto px-4 py-4 gap-3">
                         <h1 className="w-full text-center my-2 text-3xl text-black font-semibold">Past History</h1>
+
+                        {history.map((hist, index) => {
+                            return <SellBox key={index} image={hist.img} title={hist.itemName} onClick={() => {
+                                const triggerButton = document.querySelector("[data-slot='drawer-trigger']") as HTMLButtonElement | null;
+                                triggerButton?.click();
+                            }} price={hist.price} location={hist.sellerLocation} />
+                        })}
                     </div>
                 </div>
 
@@ -112,7 +242,7 @@ function page() {
                             <span className={`w-auto px-3 py-2 rounded-md cursor-pointer duration-200 ease-in-out ${condition === 'used' ? "bg-gradient-to-r from-indigo-300 to-blue-600 text-white" : "border-[1px] border-black"} active:scale-95`} onClick={() => setCondition('used')}>Used</span>
                         </div>
 
-                        <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter usage time in months (if any)" />
+                        <input type="number" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter usage time in days (if any)" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter lessor name" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter lessor contact" />
                         <input type="text" className="w-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter lessor email (if any)" />
@@ -120,7 +250,7 @@ function page() {
 
                         <div className="w-full rounded-md bg-gray-200 flex justify-start items-start">
                             <span className=" bg-gray-400 px-3 py-2 text-black rounded-l-md md:rounded-l-lg">₹</span>
-                            <input type="number" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter selling price" min={0} />
+                            <input type="text" className="w-full h-full rounded-md bg-gray-200 py-2 px-4" placeholder="Enter rent price per hour" min={0} />
                         </div>
 
                         <p className=" w-full rounded-md mt-2 lg:rounded-lg bg-black text-white text-center py-2 cursor-pointer hover:opacity-65 duration-200 ease-in-out active:scale-95">Submit for review</p>
@@ -130,10 +260,19 @@ function page() {
                     </div>
 
                     {/* past history */}
-                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto gap-3">
+                    <div className="w-full hide-scroll md:border-[1px] md:border-black md:rounded-lg h-auto md:h-[80vh] flex flex-col justify-start items-center md:overflow-y-auto px-4 py-4 gap-3">
                         <h1 className="w-full text-center my-2 text-3xl text-black font-semibold">Past History</h1>
+
+                        {history.map((hist, index) => {
+                            return <RentBox key={index} image={hist.img} title={hist.itemName} onClick={() => {
+                                const triggerButton = document.querySelector("[data-slot='drawer-trigger']") as HTMLButtonElement | null;
+                                triggerButton?.click();
+                            }} rent={hist.price} location={hist.sellerLocation} />
+                        })}
                     </div>
                 </div>
+
+
 
             </div>
 
