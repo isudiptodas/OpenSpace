@@ -25,5 +25,5 @@ export const menuLinks = [
     iconSrc: "/images/menu/settings.png",
     href: "/users/settings",
   },
-
+ 
 ];
