@@ -6,7 +6,7 @@ export const notifications = [
    
       icon: "💸",
       color: "#00C9A7",
-    },
+    },   
     {
       name: "Payment received",
       description: "$xx,xxx received for medical",
