@@ -23,8 +23,8 @@ function Footer() {
                     </div>
                     <div className="h-full w-full flex flex-col justify-start items-center gap-2">
                         <p className="text-white text-[12px] lg:text-lg font-bold mb-3">Website</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Terms of Use</p>
-                        <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Privacy Policy</p>
+                        <Link href='/terms' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Terms of Use</Link>
+                        <Link href='/privacy' className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Privacy Policy</Link>
                         <p className="text-white text-[10px] cursor-pointer lg:mb-1 lg:text-sm ">Join as Partner</p>
                     </div>
 
