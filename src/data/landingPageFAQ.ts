@@ -6,7 +6,7 @@ export const faq = [
     },
 
     {
-      question: "Who can join OpenSpace ?",
+      question: "Who can join OpenSpace ?", 
       answer: `Any indivisual is welcome to join OpenSpace. No restrictions. `
     },
 
